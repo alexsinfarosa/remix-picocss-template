@@ -1,1 +1,1 @@
-# Remix Pico Template
+# Template using Remix and Picocss

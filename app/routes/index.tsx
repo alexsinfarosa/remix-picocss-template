@@ -1,5 +1,5 @@
 import type {LinksFunction} from '@remix-run/node'
-import styles from './index.css'
+import styles from '~/styles/index.css'
 
 export const links: LinksFunction = () => {
   return [{rel: 'stylesheet', href: styles}]
@@ -32,6 +32,8 @@ export default function Index() {
           It's designed to make it easy to build static sites, dynamic sites,
           and hybrid sites.
         </p>
+
+        <button>Ciccio</button>
       </main>
     </div>
   )

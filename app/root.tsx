@@ -8,12 +8,17 @@ import {
   ScrollRestoration,
 } from '@remix-run/react'
 
+import rootStyles from '~/styles/root.css'
 import picoStyles from '@picocss/pico/css/pico.min.css'
 
 export const links: LinksFunction = () => [
   {
     rel: 'stylesheet',
     href: picoStyles,
+  },
+  {
+    rel: 'stylesheet',
+    href: rootStyles,
   },
 ]
 

@@ -10,7 +10,7 @@
 
 nav {
   grid-area: nav;
-  border-right: 1px solid #f1f5f9;
+  border-right: 1px solid var(--slate300);
   padding: 1.2em;
 }
 
