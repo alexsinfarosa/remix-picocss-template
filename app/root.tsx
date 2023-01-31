@@ -8,8 +8,8 @@ import {
   ScrollRestoration,
 } from '@remix-run/react'
 
-import rootStyles from '~/styles/root.css'
 import picoStyles from '@picocss/pico/css/pico.min.css'
+import rootStyles from '~/styles/root.css'
 
 export const links: LinksFunction = () => [
   {
@@ -24,7 +24,7 @@ export const links: LinksFunction = () => [
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'Alex Project',
+  title: 'Alex Template',
   viewport: 'width=device-width,initial-scale=1',
 })
 
