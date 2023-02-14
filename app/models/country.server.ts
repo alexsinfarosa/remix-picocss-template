@@ -1,12 +1,4 @@
-type Country = {
-  name: string
-  capital: string
-  flag: string
-  latLng: number[]
-  region: string
-  subregion: string
-  languages: {[key: string]: string}
-}
+import type {Country} from '~/types/Country'
 
 const URL = 'https://restcountries.com/v3.1/all'
 
@@ -17,9 +9,9 @@ export async function getCountries(): Promise<Country[]> {
     throw new Error(res.statusText)
   }
 
-  const countries = await res.json()
+  const countries: Country[] = await res.json()
 
-  return countries as Country[]
+  return countries
 }
 
 export async function getCountry({name}: {name: string}): Promise<Country> {
