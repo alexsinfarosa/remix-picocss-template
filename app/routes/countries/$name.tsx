@@ -2,21 +2,20 @@ import type {LoaderArgs} from '@remix-run/node'
 import {json} from '@remix-run/node'
 import {useLoaderData} from '@remix-run/react'
 import invariant from 'tiny-invariant'
-import {getPost} from '~/models/post.server'
+import {getCountry} from '~/models/country.server'
 
 export async function loader({request, params}: LoaderArgs) {
-  invariant(params.id, 'id not found')
-  const post = await getPost({id: params.id})
-  return json({post})
+  invariant(params.name, 'name not found')
+  const country = await getCountry({name: params.name})
+  return json({country})
 }
 
 export default function PostPage() {
-  const {post} = useLoaderData<typeof loader>()
-
+  const {country} = useLoaderData<typeof loader>()
+  console.log(country)
   return (
     <>
-      <h1>{post.title}</h1>
-      <p>{post.body}</p>
+      <h1>ciccio</h1>
     </>
   )
 }

@@ -11,8 +11,8 @@ export default function IndexPage() {
       <h1>Index page</h1>
       <p>Available Routes:</p>
       <div className="grid">
-        <Link to="posts" style={{...linkStyle}}>
-          /posts
+        <Link to="countries" style={{...linkStyle}}>
+          /countries
         </Link>
       </div>
     </div>

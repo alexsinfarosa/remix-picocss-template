@@ -1,7 +1,7 @@
 import type {LinksFunction, MetaFunction} from '@remix-run/node'
 import {json} from '@remix-run/node'
 import {Link, Outlet, useLoaderData} from '@remix-run/react'
-import {getPosts} from '~/models/post.server'
+import {getCountries} from '~/models/country.server'
 import styles from '~/styles/index.css'
 
 export const links: LinksFunction = () => {
@@ -16,18 +16,19 @@ export const headers = () => {
 
 export const meta: MetaFunction = () => {
   return {
-    title: 'Index Page',
-    description: ' This is the index page',
+    title: 'Countries Page',
+    description: ' This is the countries page',
   }
 }
 
 export async function loader() {
-  const posts = await getPosts()
-  return json({posts: posts.slice(0, 10)})
+  const countries = await getCountries()
+  return json({countries: countries[0]})
 }
 
 export default function Index() {
-  const {posts} = useLoaderData<typeof loader>()
+  const {countries} = useLoaderData<typeof loader>()
+  console.log(countries)
   return (
     <div className="wrapper">
       <aside>
@@ -38,13 +39,13 @@ export default function Index() {
 
           <hr></hr>
 
-          <ul>
-            {posts.map(post => (
-              <li key={post.id}>
-                <Link to={post.id.toString()}>{post.title}</Link>
+          {/* <ul>
+            {countries.map(country => (
+              <li key={country.name}>
+                <Link to={country.name}>{country.name}</Link>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </nav>
       </aside>
       <main>
