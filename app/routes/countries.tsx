@@ -9,9 +9,9 @@ export const links: LinksFunction = () => {
   return [{rel: 'stylesheet', href: styles}]
 }
 
-export const headers = () => {
+export const headers = ({loaderHeaders}: {loaderHeaders: Headers}) => {
   return {
-    'Cache-Control': 'public, max-age=604800',
+    'Cache-Control': loaderHeaders.get('Cache-Control'),
   }
 }
 
@@ -24,7 +24,8 @@ export const meta: MetaFunction = () => {
 
 export async function loader() {
   const countries = await getCountries()
-  return json({countries: countries.slice(0, 30)})
+  let headers = {'Cache-Control': 'public, max-age=60'}
+  return json({countries: countries.slice(0, 30)}, {headers})
 }
 
 export default function Index() {
@@ -43,7 +44,7 @@ export default function Index() {
           <ul>
             {countries.map((country: Country) => (
               <li key={country.name.official}>
-                <Link to={country.name.official}>{country.name.common}</Link>
+                <Link to={country.name.common}>{country.name.common}</Link>
               </li>
             ))}
           </ul>

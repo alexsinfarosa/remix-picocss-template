@@ -1,9 +1,9 @@
 import type {Country} from '~/types/Country'
 
-const URL = 'https://restcountries.com/v3.1/all'
+const URL = 'https://restcountries.com/v3.1'
 
 export async function getCountries(): Promise<Country[]> {
-  const res = await fetch(URL)
+  const res = await fetch(`${URL}/all`)
 
   if (!res.ok) {
     throw new Error(res.statusText)
@@ -15,13 +15,13 @@ export async function getCountries(): Promise<Country[]> {
 }
 
 export async function getCountry({name}: {name: string}): Promise<Country> {
-  const res = await fetch(`${URL}/${name}`)
+  const res = await fetch(`${URL}/name/${name}`)
 
   if (!res.ok) {
     throw new Error(res.statusText)
   }
 
-  const country = await res.json()
+  const country: Country[] = await res.json()
 
-  return country as Country
+  return country[0]
 }
