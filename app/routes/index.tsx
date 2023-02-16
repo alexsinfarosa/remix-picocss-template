@@ -11,10 +11,14 @@ export default function IndexPage() {
       <h1>Index page</h1>
       <p>Available Routes:</p>
       <div className="grid">
-        <Link to="countries" style={{...linkStyle}}>
-          /countries
-        </Link>
+        {links.map(link => (
+          <Link key={link.to} to={link.to} style={{...linkStyle}}>
+            {link.text}
+          </Link>
+        ))}
       </div>
     </div>
   )
 }
+
+const links = [{to: 'countries', text: 'Countries'}]
