@@ -12,10 +12,11 @@ export async function loader({request, params}: LoaderArgs) {
 
 export default function PostPage() {
   const {country} = useLoaderData<typeof loader>()
-  console.log(country)
+
   return (
     <>
       <h1>{country.name.common}</h1>
+      <h2 style={{fontSize: '6em'}}>{country.flag}</h2>
       <p>Continent: {country.continents[0]}</p>
       <p>Capital: {country.capital[0]}</p>
     </>
